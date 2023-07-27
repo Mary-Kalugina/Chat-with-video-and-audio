@@ -1,14 +1,37 @@
-import EventController from "./EventController";
-import Requests from "./Requests";
-const eventController = new EventController();
-const requests = new Requests();
+import NotificationGPS from "./NotificationGPS";
+import ChatRender from "./ChatRender";
+import ModalGPS from "./ModalGPS";
+import Record from "./Record";
 
-document.addEventListener("click", (e) => {
-  if (e.target.closest(".click")) {
-    eventController.checkButton(e);
+const record = new Record();
+const modal = new ModalGPS();
+const chat = new ChatRender();
+const GPS = new NotificationGPS();
+
+document.querySelector(".input-group").addEventListener("click", (e) => {
+  let audio = document.querySelector(".audio");
+  let video = document.querySelector(".video");
+
+  if (e.target === video) {
+    //record video
+  } else if (e.target === audio) {
+    record.startAudio();
+    chat.addMediaBtns();
+    chat.startTimer();
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  requests.getAllTickets();
+const input = document.querySelector(".chat-input");
+input.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    let msg = input.value;
+    GPS.checkPermission()
+      .then((gps) => {
+        chat.textMsg(gps, msg);
+      })
+      .catch(() => {
+        modal.showModal(msg, "p");
+      });
+  }
 });

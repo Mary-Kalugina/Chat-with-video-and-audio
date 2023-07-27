@@ -1,149 +1,85 @@
-.add_new_btn {
+.container {
     border: 1px solid black;
-    border-radius: 5px;
-    margin-left: auto;
-    width: 150px;
-    height: 30px;
+    padding: 1%;
+    margin-inline: auto;
+    max-width: 700px;
+    position:relative;
+    height: 600px;
+    box-sizing: border-box;
 }
 
-.header {
+.input-group {
+    position: absolute;
+    bottom: 0px;
     display: flex;
-    margin-bottom: 10px;
+    width: 97%;
+    margin-bottom: 3%;
+    border: 1px black solid;
+    padding: 1%;
+    box-sizing: border-box;
 }
 
-.edit_btn {
-    background-image: url("../img/free-icon-pen-4409298.png");
+.chat-input {
+    width: 90%;
+    border: none;
 }
 
-.delete_btn {
-    background-image: url("../img/free-icon-close-4947222.png");
+.input-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
 }
 
-.widgetHeader {
- font-weight: bold;
- display: flex;
- justify-content: center;
- margin: 5px;
+.audio {
+    background-image: url("../img/free-icon-microphone-9883874.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
+.video {
+    background-image: url("../img/free-icon-video-camera-4196783.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 1%;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 500px;
+}
+
+.msg {
+    border: 1px black solid;
+    border-radius: 3px;
+    margin-bottom: 2%;
+    padding: 10px;
 }
 
 .time {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal {
+    border: 1px black solid;
+    border-radius: 3px;
+    padding: 10px;
+    z-index: 20;
     position: fixed;
-    left: 575px;
-}
-
-.ticketBtns {
-    margin-left: auto;
-    margin-top: 6px;
-}
-
-.widget_container {
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-    border: 1px solid black;
-    border-radius: 5%;
-    background-color: antiquewhite;
-    width: 200px;
-    padding: 5px;
-    top: 10%;
-    left: 10%;
-}
-
-.widget_form {
-    display: flex;
-    flex-direction: column;
-    width: 170px;
-    margin: 0 auto;
-}
-
-button {
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 15px;
-    height: 15px;
-    border: none;
-    background-color: white;
-}
-
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    width: 700px;
-}
-
-.widget_btn {
-    margin-top: 15px;
-    width: 80px;
-    height: 25px;
-}
-
-.close_widget {
-    margin-left: 5px;
-}
-
-.ticket {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-    height: 50px;
-}
-
-.wrapper {
-    display: flex;
-}
-
-.ticketName {
-    margin-right: 3px;
-}
-
-.description {
-    margin: 0px 5px 5px 5px;
-}
-
-.ticket_body {
-    display: flex;
-    margin: 5px;
-    cursor: pointer;
-}
-
-.open {
-   min-height: 100px;
-   overflow-y: scroll;
+    width: 500px;
+    background-color: chocolate;
+    top: 15%;
+    left: 35%;
 }
 
 .hidden {
-    opacity: 0; 
-    visibility: hidden;
+    display: none !important;
 }
 
-/* .custom-checkbox {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
-  }
-  .custom-checkbox+label {
-    display: inline-flex;
-    align-items: center;
-    user-select: none;
-  }
-  .custom-checkbox+label::before {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    flex-shrink: 0;
-    flex-grow: 0;
-    border: 1px solid #adb5bd;
-    border-radius: 1.25em;
-    margin-right: 0.5em;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 50% 50%;
-  }
-  .custom-checkbox:checked+label::before {
-    border-color: #0b76ef;
-    background-color: #0b76ef;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-  } */
+.btns, .media-btns {
+    display: flex;
+}

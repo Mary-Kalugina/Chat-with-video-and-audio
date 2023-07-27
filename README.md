@@ -1,3 +1,6 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/sdtxbwn0gra3e03h?svg=true)](https://ci.appveyor.com/project/Mary-Kalugina/helpdesk)
+# Webpack5
 
-https://github.com/Mary-Kalugina/HelpDesk/deployments/activity_log?environment=github-pages
+[![Build status](https://ci.appveyor.com/api/projects/status/jc3qcdh5rcapij0n?svg=true)](https://ci.appveyor.com/project/Mary-Kalugina/ahj-first-hw)
+![CI](https://github.com/<Mary-Kalugina>/<ahj_first_hw>/actions/workflows/web.yml/badge.svg)
+[Руководство по настройке Webpack](https://webpack.js.org/guides/)
+[Руководство по настройке GitHub Actions](https://docs.github.com/en/actions/quickstart)
