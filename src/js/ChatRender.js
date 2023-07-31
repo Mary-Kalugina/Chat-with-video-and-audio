@@ -23,16 +23,17 @@ export default class ChatRender {
   mediaMsg(tag, gps, data) {
     let msg = `<div class="msg">
     <div class="time">${this.time()}</div>
-    <${tag} src="${data}"></${tag}>
+    <${tag} src="${data}" controls></${tag}>
     <div class="gps">${gps}</div>
     </div>`;
     this.renderMsg(msg);
+    this.normalInput();
   }
 
   normalInput() {
+    this.stopTimer();
     document.querySelector(".btns").classList.remove("hidden");
     document.querySelector(".media-btns").classList.add("hidden");
-    this.stopTimer();
   }
 
   clearInput() {

@@ -1,6 +1,5 @@
 # Webpack5
 
-[![Build status](https://ci.appveyor.com/api/projects/status/jc3qcdh5rcapij0n?svg=true)](https://ci.appveyor.com/project/Mary-Kalugina/ahj-first-hw)
-![CI](https://github.com/<Mary-Kalugina>/<ahj_first_hw>/actions/workflows/web.yml/badge.svg)
-[Руководство по настройке Webpack](https://webpack.js.org/guides/)
-[Руководство по настройке GitHub Actions](https://docs.github.com/en/actions/quickstart)
+[![Build status](https://ci.appveyor.com/api/projects/status/guubbdfn3k3cagq0?svg=true)](https://ci.appveyor.com/project/Mary-Kalugina/chat-with-video-and-audio)
+
+https://github.com/Mary-Kalugina/Chat-with-video-and-audio/deployments/activity_log?environment=github-pages

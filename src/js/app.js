@@ -13,11 +13,9 @@ document.querySelector(".input-group").addEventListener("click", (e) => {
   let video = document.querySelector(".video");
 
   if (e.target === video) {
-    //record video
+    record.startVideoRecord();
   } else if (e.target === audio) {
-    record.startAudio();
-    chat.addMediaBtns();
-    chat.startTimer();
+    record.startAudioRecord();
   }
 });
 

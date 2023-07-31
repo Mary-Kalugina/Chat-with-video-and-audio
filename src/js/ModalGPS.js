@@ -16,12 +16,13 @@ export default class ModalGPS {
     this.msgType = null;
     this.chat = new ChatRender();
   }
+
   showModal(msg, type) {
     if (document.querySelector(".modal")) {
       return;
     }
     this.msg = msg;
-    this.type = type;
+    this.msgType = type;
     document.body.insertAdjacentHTML("afterbegin", this.html);
     this.listeners();
   }
@@ -32,27 +33,36 @@ export default class ModalGPS {
       .addEventListener("click", this.closeModal.bind(this));
     document
       .querySelector(".modal-ok")
-      .addEventListener("click", this.saveGPS.bind(this));
+      .addEventListener("click", this.checkValue.bind(this));
   }
 
-  saveGPS() {
-    let input = document.querySelector(".modal").querySelector(".modal-input");
-    if (!input.value) {
-      return;
+  saveGPS(gps) {
+    if (this.msgType === "p") {
+      this.chat.textMsg(gps, this.msg);
+    } else {
+      this.chat.mediaMsg(this.msgType, gps, this.msg);
     }
+    this.closeModal();
+  }
+
+  checkValue() {
+    const input = document
+      .querySelector(".modal")
+      .querySelector(".modal-input");
     const regex = /^\[?-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?\]?$/;
 
-    if (regex.test(input.value)) {
-      if (this.type === "p") {
-        this.chat.textMsg(input.value, this.msg);
-      } else if (this.type === "audio") {
-        this.chat.mediaMsg("audio", input.value, this.msg);
-      }
-      //video
-      this.closeModal();
-    } else {
-      input.style.border = "2px red solid";
+    if (!input.value || !regex.test(input.value)) {
+      input.style.border = "2px solid red";
+      return;
     }
+    if (!input.value.startsWith("[")) {
+      input.value = "[" + input.value;
+    }
+    if (!input.value.endsWith("]")) {
+      input.value = input.value + "]";
+    }
+
+    this.saveGPS(input.value);
   }
 
   closeModal() {

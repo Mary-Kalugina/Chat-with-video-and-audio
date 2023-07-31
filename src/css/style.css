@@ -24,10 +24,11 @@
     border: none;
 }
 
-.input-btn {
+.input-btn, .media {
     width: 20px;
     height: 20px;
     border: none;
+    margin: 3px;
 }
 
 .audio {
@@ -42,7 +43,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 1%;
 }
 
 .chat {
@@ -82,4 +82,23 @@
 
 .btns, .media-btns {
     display: flex;
+}
+
+.ok {
+    background-image: url("../img/free-icon-success-3934550.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.cancel {
+    background-image: url("../img/free-icon-cancel-7617302.png");
+    background-position: center center;
+    background-repeat: no-repeat; 
+    background-size: contain;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
 }

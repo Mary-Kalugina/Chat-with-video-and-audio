@@ -1,63 +1,67 @@
-// Import the ModalGPS class
+/* eslint-env node, jest */
+
 import ModalGPS from "../ModalGPS";
+import { JSDOM } from "jsdom";
+const dom = new JSDOM("<!DOCTYPE html><html><body></body></html>");
+global.document = dom.window.document;
+global.window = dom.window;
+global.navigator = dom.window.navigator;
 
-// Create a test suite for the saveGPS method
-describe("ModalGPS saveGPS() method tests", () => {
-  let modalGPS;
-
-  // Run before each test case
+describe("checkValue()", () => {
   beforeEach(() => {
-    // Initialize the ModalGPS instance
-    modalGPS = new ModalGPS();
-
-    // Mock chat.textMsg function
-    modalGPS.chat.textMsg = jest.fn();
+    // Create a virtual DOM environment using jsdom before each test
+    document.body.innerHTML = `
+      <div class="modal">
+        <input class="modal-input" />
+      </div>
+    `;
   });
 
-  // Test when input is empty
-  test("Should do nothing when input is empty", () => {
-    // Call the saveGPS method
-    modalGPS.saveGPS();
+  test("should set red border and return when input is empty", () => {
+    // Arrange
+    const modalGPS = new ModalGPS();
+    const input = document.querySelector(".modal-input");
+    input.value = "";
+    const saveGPSMock = jest.fn();
+    modalGPS.saveGPS = saveGPSMock;
 
-    // Expect chat.textMsg not to be called
-    expect(modalGPS.enderTextMsg).not.toHaveBeenCalled();
+    // Act
+    modalGPS.checkValue();
+
+    // Assert
+    expect(input.style.border).toBe("2px solid red");
+    expect(saveGPSMock).not.toHaveBeenCalled();
   });
 
-  // Test when input matches the regex
-  test("Should call chat.renderTextMsg and closeModal when input matches regex", () => {
-    // Set the modal type
-    modalGPS.type = "p";
+  test("should set red border and return when input has invalid value", () => {
+    // Arrange
+    const modalGPS = new ModalGPS();
+    const input = document.querySelector(".modal-input");
+    input.value = "invalidValue";
+    const saveGPSMock = jest.fn();
+    modalGPS.saveGPS = saveGPSMock;
 
-    // Set the input value with valid GPS coordinates
-    const validGPS = "12.34, 56.78";
-    const input = document.createElement("input");
-    input.className = "modal-input";
-    input.value = validGPS;
-    document.querySelector(".modal").appendChild(input);
+    // Act
+    modalGPS.checkValue();
 
-    // Call the saveGPS method
-    modalGPS.saveGPS();
-
-    // Expect enderTextMsg to be called with the correct arguments
-    expect(modalGPS.chat.textMsg).toHaveBeenCalledWith("p", validGPS, null);
-
-    // Expect the input to be removed from the DOM
-    expect(document.querySelector(".modal").childNodes.length).toBe(0);
+    // Assert
+    expect(input.style.border).toBe("2px solid red");
+    expect(saveGPSMock).not.toHaveBeenCalled();
   });
 
-  // Test when input does not match the regex
-  test("Should set input border to red when input does not match regex", () => {
-    // Set the input value with invalid GPS coordinates
-    const invalidGPS = "invalid";
-    const input = document.createElement("input");
-    input.className = "modal-input";
-    input.value = invalidGPS;
-    document.querySelector(".modal").appendChild(input);
+  test("should add missing [ and ] when input is valid and saveGPS is called", () => {
+    // Arrange
+    const modalGPS = new ModalGPS();
+    const input = document.querySelector(".modal-input");
+    input.value = "12.345, 67.890";
+    const saveGPSMock = jest.fn();
+    modalGPS.saveGPS = saveGPSMock;
 
-    // Call the saveGPS method
-    modalGPS.saveGPS();
+    // Act
+    modalGPS.checkValue();
 
-    // Expect input border to be set to red
-    expect(input.style.border).toBe("2px red solid");
+    // Assert
+    expect(input.value).toBe("[12.345, 67.890]");
+    expect(saveGPSMock).toHaveBeenCalledWith("[12.345, 67.890]");
   });
 });
