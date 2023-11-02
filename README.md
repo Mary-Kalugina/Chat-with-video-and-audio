@@ -1,4 +1,4 @@
-# Webpack5
+Чат для заметок. Записывайте аудио и видео сообщения, или отправляйте тест. У сообщения будет отметка с геолокацией.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/guubbdfn3k3cagq0?svg=true)](https://ci.appveyor.com/project/Mary-Kalugina/chat-with-video-and-audio)
 
