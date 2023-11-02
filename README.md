@@ -4,6 +4,6 @@
 
 View the project on GitHubPages [https://github.com/Mary-Kalugina/Chat-with-video-and-audio/deployments/activity_log?environment=github-pages](https://mary-kalugina.github.io/Chat-with-video-and-audio/)https://mary-kalugina.github.io/Chat-with-video-and-audio/
 
-Clone the project
-Run 'npm -i'
+Clone the project<br>
+Run 'npm -i'<br>
 Run 'npm run start'
